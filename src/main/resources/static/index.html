@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<!--    个人配置-->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+<div class="layout">
+    <Layout style="position:relative">
+        <div id="app">
+            <i-header style="background: seashell">
+                <template>
+                    <i-menu @on-select="indexPage" class="layout-header" mode="horizontal" :theme="theme1" active-name="1">
+                        <Menu-Item name="10" class="layout-logo">
+                            <Icon type="logo-rss" size="50"></Icon>
+                        </Menu-Item>
+                        <Menu-Item  name="首页">
+                            <Icon type="ios-paper"></Icon>
+                            首页
+                        </Menu-Item>
+                        <Menu-Item name="2">
+                            <Icon type="ios-people"></Icon>
+                            用户管理
+                        </Menu-Item>
+                        <div id="kind">
+                        <Submenu transfer name="3">
+                            <template slot="title">
+                                <Icon type="ios-stats"></Icon>
+                                文章分类
+                            </template>
+                            <MenuGroup title="使用">
+                                <Menu-Item name="3-1">类别1</Menu-Item>
+                                <Menu-Item name="3-2">类别2</Menu-Item>
+                                <Menu-Item name="3-3">类别3</Menu-Item>
+                            </MenuGroup>
+                            <MenuGroup title="留存">
+                                <Menu-Item name="3-4">类别4</Menu-Item>
+                                <Menu-Item name="3-5">类别5</Menu-Item>
+                            </MenuGroup>
+                        </Submenu>
+                        </div>
+                        <Menu-Item name="4">
+                            <Icon type="ios-construct"></Icon>
+                            综合设置
+                        </Menu-Item>
+                        <Menu-Item name="5" style="align-content: center">
+                            <template>
+                                <div>
+                                    <i-input search v-model="value" placeholder="输入要查询的内容..." style="width:400px"
+                                             v-on:on-search="search()"/>
+                                </div>
+                            </template>
+                        </Menu-Item>
+                        <div class="layout-right">
+                            <Menu-Item name="6">
+                                <template>
+                                    <div>
+                                        <div class="demo-avatar">
+                                            <Avatar icon="ios-person" size="large" icon="ios-person"/>
+                                        </div>
+                                    </div>
+                                </template>
+                            </Menu-Item>
+                            <Menu-Item name="7">
+                                <Icon type="ios-people"></Icon>
+                                我的信息
+                            </Menu-Item>
+                            <Menu-Item name="8">
+                                <template>
+                                    <Icon type="ios-stats"></Icon>
+                                    我的收藏
+                                </template>
+                            </Menu-Item>
+                            <Menu-Item name="7">
+                                <Icon type="ios-people"></Icon>
+                                消息
+                            </Menu-Item>
+                            <Menu-Item name="8">
+                                <template>
+                                    <i-button type="info" icon="ios-brush">写博客</i-button>
+                                </template>
+                            </Menu-Item>
+                        </div>
+                    </i-menu>
+                    <br>
+                </template>
+            </i-header>
+            <i-content class="layout-content">
+                <template>
+                    <Carousel autoplay v-model="value1" loop dots="inside" style="height:600px">
+                        <Carousel-Item>
+                            <div class="demo-carousel" style="background: #099098;align-content: center;height: 600px">
+                                1
+                            </div>
+                        </Carousel-Item>
+                        <Carousel-Item>
+                            <div class="demo-carousel" style="background: #099098;align-content: center;height: 600px">
+                                2
+                            </div>
+                        </Carousel-Item>
+                        <Carousel-Item>
+                            <div class="demo-carousel" style="background: #099098;align-content: center;height: 600px">
+                                3
+                            </div>
+                        </Carousel-Item>
+                        <Carousel-Item>
+                            <div class="demo-carousel" style="background: #099098;align-content: center;height: 600px">
+                                4
+                            </div>
+                        </Carousel-Item>
+                    </Carousel>
+                </template>
+            </i-content>
+            <i-footer class="layout-footer-center">
+                <p>Change theme</p>
+                <Radio-Group v-model="theme1">
+                    <Radio label="light"></Radio>
+                    <Radio label="dark"></Radio>
+                    <Radio label="primary"></Radio>
+                </Radio-Group>
+            </i-footer>
+        </div>
+    </Layout>
+</div>
+</body>
+</html>

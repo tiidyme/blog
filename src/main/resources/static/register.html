@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <style>
+        .Layout-content-register {
+            margin: auto;
+            height: 500px;
+            width: 500px;
+            align-content: center;
+        }
+    </style>
+
+</head>
+<body>
+<div id="register" class="Layout-content-register">
+    <template style="margin-left: 500px">
+        <i-form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="80">
+            <Form-Item label="NickName" prop="nickName">
+                <i-input v-model="formValidate.nickName" placeholder="Enter your NickName"></i-input>
+            </Form-Item>
+            <Form-Item label="Account" prop="account">
+                <i-input v-model="formValidate.account" placeholder="Enter your Account"></i-input>
+            </Form-Item>
+            <Form-Item label="Password" prop="password">
+                <i-input type="password" v-model="formValidate.password" placeholder="Enter your password"></i-input>
+            </Form-Item>
+            <Form-Item label="E-mail" prop="mail">
+                <i-input v-model="formValidate.mail" placeholder="Enter your e-mail"></i-input>
+            </Form-Item>
+            <Form-Item label="Phone" prop="phone">
+                <i-input v-model="formValidate.phone" placeholder="Enter your e-mail"></i-input>
+            </Form-Item>
+            <Form-Item label="Birthday">
+                <Row>
+                    <Col span="11">
+                    <Form-Item prop="date">
+                        <Date-Picker type="date" placeholder="Select date" v-model="formValidate.date"
+                                     format="yyyy年MM月dd日"></Date-Picker>
+                    </Form-Item>
+                    </Col>
+                </Row>
+            </Form-Item>
+            <Form-Item>
+                <i-button type="primary" @click="handleSubmit('formValidate')">Submit</i-button>
+                <i-button @click="handleReset('formValidate')" style="margin-left: 8px">Reset</i-button>
+            </Form-Item>
+        </i-form>
+    </template>
+</div>
+<script>
+    $(function () {
+        var vue = new Vue({
+            el: "#register",
+            data: {
+                formValidate: {
+                    nickName: '',
+                    account: '',
+                    password: '',
+                    mail: '',
+                    phone: '',
+                    date: ''
+                },
+                ruleValidate: {
+                    account: [
+                        {required: true, message: 'The name cannot be empty', trigger: 'blur'}
+                    ],
+                    password: [
+                        {required: true, message: 'The name cannot be empty', trigger: 'blur'},
+                        {
+                            type: 'string',
+                            min: 6,
+                            message: 'The password length cannot be less than 6 bits',
+                            trigger: 'blur'
+                        }
+                    ],
+                    mail: [
+                        {required: true, message: 'Mailbox cannot be empty', trigger: 'blur'},
+                        {type: 'email', message: 'Incorrect email format', trigger: 'blur'}
+                    ],
+                    phone: [
+                        {required: true, message: 'The phone cannot be empty', tigger: 'blur'}
+                    ],
+                    date: [
+                        {required: true, type: 'date', message: 'Please select the date', trigger: 'change'}
+                    ]
+                }
+            },
+            mounted: handleReset = function (name) {
+                vue.$refs.formValidate.resetFields();
+            }
+        })
+        timeFormat = function (date) {
+            var y = date.getFullYear();
+            var m = date.getMonth();
+            var d = date.getDate();
+            return y + '-' + m + '-' + d;
+        }
+        handleSubmit = function () {
+            vue.formValidate.date = timeFormat(vue.formValidate.date);
+            alert(vue.formValidate.date);
+            $.post("register", vue.formValidate, function () {
+                alert("回调函数");
+            })
+        }
+        // handleReset = function (formValidate){
+        //     vue.$refs.formValidate.resetFields();
+        // }
+
+    })
+
+</script>
+</body>
+</html>

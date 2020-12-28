@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link rel="stylesheet" type="text/css" href="http://unpkg.com/iview/dist/styles/iview.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="http://unpkg.com/iview/dist/iview.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script type="text/javascript" src="js/login.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+<div id="login">
+    <Layout>
+        <i-header style="background: seashell">
+
+        </i-header>
+        <i-content style="text-align: center">
+            <div class="layout-content-login" style="margin:20% 40% 20% 40%">
+                <template style="align-content: center">
+                    <i-form ref="formInline" :model="formInline" :rules="ruleInline">
+                        <form-item prop="user">
+                            <i-input type="text" v-model="formInline.user" placeholder="Username">
+                                <Icon type="ios-person-outline" slot="prepend"></Icon>
+                            </i-input>
+                        </form-item>
+                        <form-item prop="password">
+                            <i-input type="password" v-model="formInline.password" placeholder="Password">
+                                <Icon type="ios-lock-outline" slot="prepend"></Icon>
+                            </i-input>
+                        </form-item>
+                        <form-item>
+                            <i-button type="primary" @click="handleSubmit('formInline')">Signin</i-button>
+                            <i-button type="default" @click="jump()">register</i-button>
+                        </form-item>
+                    </i-form>
+                </template>
+            </div>
+        </i-content>
+        <i-footer>
+
+        </i-footer>
+    </Layout>
+
+
+</div>
+</body>
+</html>

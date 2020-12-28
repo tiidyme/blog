@@ -1,0 +1,30 @@
+.layout {
+    border: 1px solid #d7dde4;
+    background: #f5f7f9;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+
+}
+
+.layout-header {
+    overflow: visible;
+}
+
+.layout-content {
+    height: 700px;
+}
+
+.layout-logo {
+
+}
+
+.layout-right {
+    float: right;
+}
+
+.layout-footer-center {
+    text-align: center;
+    padding: 0 50px;
+}
